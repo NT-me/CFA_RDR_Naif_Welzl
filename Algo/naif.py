@@ -35,6 +35,7 @@ def algoNaif(listPoint: list):
     if not u.verifToutPoints(listPoint, C):
         return C
     else:
+        listPoint = set(listPoint)
         res = Cercle(None, math.inf)
         for p in listPoint:
             for q in listPoint:

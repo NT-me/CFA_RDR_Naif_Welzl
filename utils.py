@@ -9,9 +9,12 @@ def crossproduct(p, q, s, t):
 
 
 def generateRanPoints(nbre: int):
-    res = []
+    res = dict()
+    L = []
+    name = "random-"+str(nbre)
     for i in range(0, nbre):
-        res.append(Point(r.randint(0, 9999), r.randint(0, 9999)))
+        L.append(Point(r.randint(0, 9999), r.randint(0, 9999)))
+    res[name] = L
     return res
 
 

@@ -27,6 +27,9 @@ class Point(object):
     def __str__(self):
         return "Point [x: "+str(self.x) + ", y: " + str(self.y) + "]"
 
+    def __hash__(self):
+        return hash((self.x, self.y))
+
     def distance(self, other):
         A = pow(other.x-self.x, 2)
         B = pow(other.y-self.y, 2)

@@ -4,7 +4,7 @@ import os
 
 def openTestBase(value):
     fileListe = os.listdir(os.getcwd()+"/OpenFile/baseDeTest")
-    listfilePoint = list()
+    listfilePoint = dict()
     i = 0
     if value == "*":
         value = len(fileListe)
@@ -23,5 +23,5 @@ def openTestBase(value):
                 if len(token) == 2:
                     filePoint.append(Point(int(token[0]), int(token[1])))
 
-            listfilePoint.append(filePoint)
+            listfilePoint[fichier] = filePoint
     return listfilePoint
