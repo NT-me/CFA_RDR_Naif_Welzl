@@ -10,7 +10,7 @@ import csv
 
 if __name__ == "__main__":
 
-    OP = eof.openTestBase(3)
+    OP = eof.openTestBase('*')
     for namelistOfPoint in OP:
         file = open("rapport/"+namelistOfPoint+".csv", "w", newline='')
         writer = csv.writer(file)
