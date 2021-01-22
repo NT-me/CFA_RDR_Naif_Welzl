@@ -10,7 +10,6 @@ def openTestBase(value):
         value = len(fileListe)
 
     for fichier in fileListe:
-        print(fichier)
         i = i + 1
         if i > value:
             break

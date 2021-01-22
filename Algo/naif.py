@@ -1,8 +1,10 @@
 from Objet.point import Point
 from Objet.cercle import Cercle
+import math
+import utils as u
 
 
-def trouverDiametre(listPoint: list):
+def trouverC(listPoint: list):
     if len(listPoint) < 3:
         return None
 
@@ -27,7 +29,18 @@ def trouverDiametre(listPoint: list):
 
 
 def algoNaif(listPoint: list):
-    res = Cercle(None, None)
-    diam = trouverDiametre(listPoint)
-    res.initFromDiametre(diam[0], diam[1])
-    return res
+    C = Cercle(None, None)
+    diam = trouverC(listPoint)
+    C.initFromDiametre(diam[0], diam[1])
+    if not u.verifToutPoints(listPoint, C):
+        return C
+    else:
+        res = Cercle(None, math.inf)
+        for p in listPoint:
+            for q in listPoint:
+                for r in listPoint:
+                    C = u.cercle3pts(p, q, r)
+                    if C:
+                        if C.rayon < res.rayon and not u.verifToutPoints(listPoint, C):
+                            res = C
+        return res

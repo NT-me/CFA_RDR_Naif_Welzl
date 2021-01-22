@@ -1,4 +1,5 @@
 from Objet.point import Point
+import math
 
 
 class Cercle(object):
@@ -7,7 +8,10 @@ class Cercle(object):
         self.rayon = rayon
 
     def contient(self, p: Point):
-        return self.centre.distance(p) <= self.rayon
+        if self.centre.distance(p) <= self.rayon:
+            return True
+        else:
+            return math.isclose(self.centre.distance(p), self.rayon, rel_tol = 1e-05)
 
     def initFromDiametre(self, A: Point, B: Point):
         newC = Point(0,0)
