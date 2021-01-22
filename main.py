@@ -9,27 +9,8 @@ import csv
 
 
 if __name__ == "__main__":
-    # OP = []
-    # OP.append(u.generateRanPoints(50))
-    # for listOfPoint in OP:
-    #
-    #     start_time = time.time()
-    #     resC = an.algoNaif(listOfPoint)
-    #     interval = time.time() - start_time
-    #
-    #     print("\n=========\nTps pour {0} pts : {1}s".format(len(listOfPoint), interval))
-    #     print(resC)
-    #     VTP = u.verifToutPoints(listOfPoint, resC)
-    #     if VTP:
-    #         for pt in VTP:
-    #             print("\n====")
-    #             print(pt.distance(resC.centre))
-    #             print(pt)
-    #
 
-    # OP = eof.openTestBase(1)
-
-    OP = {**u.generateRanPoints(10), **u.generateRanPoints(12)}
+    OP = eof.openTestBase(3)
     for namelistOfPoint in OP:
         file = open("rapport/"+namelistOfPoint+".csv", "w", newline='')
         writer = csv.writer(file)
