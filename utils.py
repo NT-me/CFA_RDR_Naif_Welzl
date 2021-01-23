@@ -18,12 +18,19 @@ def generateRanPoints(nbre: int):
     return res
 
 
-def verifToutPoints(listOfPoint: list, C: Cercle):
+def pointsManquant(listOfPoint: list, C: Cercle):
     res = []
     for lop in listOfPoint:
         if not C.contient(lop):
             res.append(lop)
     return res
+
+
+def verifToutPoints(listOfPoint: list, C: Cercle):
+    for lop in listOfPoint:
+        if not C.contient(lop):
+            return False
+    return True
 
 
 def norme(a: Point):

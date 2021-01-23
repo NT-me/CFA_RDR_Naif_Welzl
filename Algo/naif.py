@@ -29,19 +29,30 @@ def trouverC(listPoint: list):
 
 
 def algoNaif(listPoint: list):
-    C = Cercle(None, None)
-    diam = trouverC(listPoint)
-    C.initFromDiametre(diam[0], diam[1])
-    if not u.verifToutPoints(listPoint, C):
-        return C
-    else:
-        listPoint = set(listPoint)
-        res = Cercle(None, math.inf)
-        for p in listPoint:
-            for q in listPoint:
-                for r in listPoint:
+    listPoint = set(listPoint)
+    PQ_notRet = set()
+    for p in listPoint:
+        for q in listPoint:
+            if p is not None and q is not None and p != q and (p, q) not in PQ_notRet:
+                PQ_notRet.add((p, q))
+                PQ_notRet.add((q, p))
+                newC = Cercle(None, None)
+                newC.initFromDiametre(p, q)
+                if u.verifToutPoints(listPoint, newC):
+                    return newC
+
+    res = Cercle(None, math.inf)
+    PQR_notRet = set()
+    for p in listPoint:
+        for q in listPoint:
+            for r in listPoint:
+                if p != q and p != r and q != r and (p, q, r) not in PQR_notRet:
+                    PQR_notRet.add((p, q, r))
+                    PQR_notRet.add((r, p, q))
+                    PQR_notRet.add((q, r, p))
                     C = u.cercle3pts(p, q, r)
                     if C:
-                        if C.rayon < res.rayon and not u.verifToutPoints(listPoint, C):
+                        if C.rayon < res.rayon and u.verifToutPoints(listPoint, C):
                             res = C
-        return res
+
+    return res

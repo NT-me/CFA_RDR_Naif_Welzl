@@ -9,7 +9,6 @@ import csv
 
 
 if __name__ == "__main__":
-
     OP = eof.openTestBase('*')
     for namelistOfPoint in OP:
         file = open("rapport/"+namelistOfPoint+".csv", "w", newline='')
@@ -24,7 +23,7 @@ if __name__ == "__main__":
 
         print("\n=========\nTps pour {0} pts : {1}s".format(len(listOfPoint), interval))
         print(resC)
-        VTP = u.verifToutPoints(listOfPoint, resC)
+        VTP = u.pointsManquant(listOfPoint, resC)
         ptPerdu = "EMPTY"
         if VTP:
             ptPerdu = ""
@@ -44,8 +43,8 @@ if __name__ == "__main__":
         interval = time.time() - start_time
 
         print("\n=========\nTps pour {0} pts : {1}s".format(len(listOfPoint), interval))
-        print(resC)
-        VTP = u.verifToutPoints(listOfPoint, resC)
+        # print(resC)
+        VTP = u.pointsManquant(listOfPoint, resC)
         ptPerdu = "EMPTY"
         if VTP:
             ptPerdu = ""

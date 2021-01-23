@@ -31,6 +31,6 @@ class Point(object):
         return hash((self.x, self.y))
 
     def distance(self, other):
-        A = pow(other.x-self.x, 2)
-        B = pow(other.y-self.y, 2)
+        A = (other.x-self.x) * (other.x-self.x)
+        B = (other.y-self.y) * (other.y-self.y)
         return math.sqrt(A+B)

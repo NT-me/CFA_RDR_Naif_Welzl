@@ -1,0 +1,20 @@
+    listPoint = listPoint_.copy()
+    listPoint.remove(diam[0])
+    listPoint.remove(diam[1])
+    while(len(listPoint) > 0):
+        S = listPoint[0]
+
+        if C.contient(S):
+            listPoint.remove(S)
+
+        else:
+            rayon_ = 0.5*(C.rayon + C.centre.distance(S))
+            alpha = rayon_ / C.centre.distance(S)
+            beta = 1 - alpha
+            pC_ = Point(None, None)
+            pC_.x = alpha*C.centre.x + beta * S.x
+            pC_.y = alpha*C.centre.y + beta * S.y
+
+            C = Cercle(pC_, rayon_)
+            listPoint_.remove(S)
+    return Cercle
